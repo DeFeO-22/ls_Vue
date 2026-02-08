@@ -1,0 +1,109 @@
+
+*{
+  font-family: "Lilita One", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    text-align: center;
+}
+
+body {
+    background: url("../img/Fondo.jpg") no-repeat center center fixed;
+     background-size: cover;
+    color: #333;
+}
+
+
+.header {
+    background: linear-gradient(135deg, #2b5876, #4e4376);
+    color: white;
+    text-align: center;
+    padding: 2rem 1rem;
+}
+
+.header h1 {
+    font-size: 2rem;
+    margin-bottom: 0.5rem;
+}
+
+
+.contenedor {
+    max-width: 1100px;
+    margin: 2rem auto;
+    padding: 0 1rem;
+}
+
+.row {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.5rem;
+}
+
+
+#card {
+    background: transparent;
+    padding: 1.5rem;
+}
+
+#card2 {
+    background: transparent;
+    padding: 1.5rem;
+}
+
+#card h3, #card h4 {
+    margin-bottom: 1rem;
+    color: black;
+    font-size: 2rem;
+}
+
+#card2 h3, #card2 h4 {
+    margin-bottom: 1rem;
+    color: black;
+}
+
+input[type="range"] {
+    width: 100%;
+    margin: 1rem 0;
+}
+
+.input-text {
+    width: 100%;
+    padding: 0.6rem;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    margin-bottom: 1rem;
+}
+
+
+.precio {
+    display: block;
+    margin-bottom: 1rem;
+}
+
+.contador {
+    margin: 1rem 0;
+    font-weight: bold;
+}
+
+#card ol {
+    padding-left: 1.2rem;
+    list-style: none;
+    color: black;
+    font-size: 2rem;
+}
+#card2 ol {
+    padding-left: 1.2rem;
+    list-style: none;
+    color: black;
+    font-size: 1.5rem;
+}
+
+li {
+    margin-bottom: 0.4rem;
+}
+

@@ -1,0 +1,77 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Bitcount+Single:wght@100..900&family=Lilita+One&family=Orbitron:wght@400..900&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <title>Heroes de alquiler</title>
+</head>
+<body>
+    <header>
+        <h1>¿Que heroe te puede ayudar?</h1>
+        <h3>Te diremos que heroe puede ayudarte segun tu presupuesto</h3>
+    </header>
+    
+          <section>
+        <div class="row">
+            <article id="card">
+
+                        <h3>Filtro por Rango</h3>
+                          <input type="range" v-model="minimo" min="0" max="1000"><br>
+                          <label style="font-size: 2rem; color: white;">Presupuesto maximo: {{minimo}} $</label>
+                          <hr>
+                          <ol>
+                            <li v-for="heroe in mejoresHeroes">{{heroe.nombre}}-{{heroe.costo}}</li>
+                          </ol>
+            </article>
+
+            <article id="card2">    
+                <input type="search" v-model="buscar" placeholder="Héroe a buscar">
+                <br><br>
+
+                <div v-if="buscar !== ''">
+                <div v-if="heroeEncontrado">
+                    <h3 style="color:white;">
+                    Estado de {{ heroeEncontrado.nombre }}:
+                    <span
+                        :style="{
+                        color: heroeEncontrado.estado === 'Disponible'
+                            ? 'lightgreen'
+                            : 'red'
+                        }"
+                    >
+                        {{ heroeEncontrado.estado }}
+                    </span>
+                    </h3>
+                </div>
+
+                <div v-else>
+                    <h3 style="color: orange;">
+                    Héroe no encontrado
+                    </h3>
+                </div>
+                </div>
+
+            <h3 style="color: white;">Coincidencias: {{ heroesCoinciden }}</h3>
+
+            <h5 style="font-size: 2rem; color: white;">Misiones cumplidas</h5>
+            <ol>
+                <li v-for="heroe in heroesOrdenados">
+                <b style="color: rgb(16, 157, 200);">
+                    {{heroe.tareas}} -
+                </b>
+                {{heroe.nombre}}
+                </li>
+            </ol>
+            </article>
+                </div>
+                </section>
+
+
+    <script src="js/script.js"></script>
+
+</body>
+</html>
