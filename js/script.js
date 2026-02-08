@@ -53,3 +53,32 @@ const ap3=Vue.createApp({
 });
 
 ap3.mount('#card2');
+
+const ap4= Vue.createApp({
+data() {
+    return {
+        inventario: [
+            {heroe: 'Mr. compras', tiempo:2 },
+            {heroe: 'Sra. Brillosa', tiempo: 1.5 }
+        ],
+       nuevoItem:{heroe:'', tiempo:null},
+       seleccionados:[],
+    }
+},
+methods: {
+   agregarItem(){
+    if(this.nuevoItem.heroe&& this.nuevoItem.tiempo)
+        this.inventario.push({...this.nuevoItem});
+        this.nuevoItem={heroe:'', tiempo:null}
+   },
+   seleccionarItem(item){
+    this.seleccionados.push(item)
+   },
+   paraImprimirH(){
+    localStorage.setItem('heroesseleccionados', JSON.stringify(this.seleccionados))
+    window.location.href='imprimirH.html';
+   }
+}
+});
+
+ap4.mount('#registro');
