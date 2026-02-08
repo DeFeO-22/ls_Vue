@@ -32,28 +32,28 @@
                 <input type="search" v-model="buscar" placeholder="Héroe a buscar">
                 <br><br>
 
-                <div v-if="buscar !== ''">
-                <div v-if="heroeEncontrado">
-                    <h3 style="color:white;">
-                    Estado de {{ heroeEncontrado.nombre }}:
-                    <span
-                        :style="{
-                        color: heroeEncontrado.estado === 'Disponible'
-                            ? 'lightgreen'
-                            : 'red'
-                        }"
-                    >
-                        {{ heroeEncontrado.estado }}
-                    </span>
-                    </h3>
-                </div>
+        <div v-if="buscar !== ''">
+        <div v-if="heroeEncontrado">
+            <h3 style="color:white;">
+            Estado de {{ heroeEncontrado.nombre }}:
+            <span
+                :style="{
+                color: heroeEncontrado.estado === 'Disponible'
+                    ? 'lightgreen'
+                    : 'red'
+                }"
+            >
+                {{ heroeEncontrado.estado }}
+            </span>
+            </h3>
+        </div>
 
-                <div v-else>
-                    <h3 style="color: orange;">
-                    Héroe no encontrado
-                    </h3>
-                </div>
-                </div>
+        <div v-else>
+            <h3 style="color: orange;">
+            Héroe no encontrado
+            </h3>
+        </div>
+        </div>
 
             <h3 style="color: white;">Coincidencias: {{ heroesCoinciden }}</h3>
 
@@ -70,6 +70,57 @@
                 </div>
                 </section>
 
+        <div id="registro">
+        <h2 class="mb-4">Equipo de contracion para heroes de alquiler</h2>
+
+        <div >
+                        <input type="text" v-model="nuevoItem.heroe" placeholder="Nombre del Heroe">
+                    </div>
+                    <div>
+                        <input type="number" v-model.number="nuevoItem.tiempo" placeholder="Tiempo contradato (hrs)">
+                    </div>
+                    <div >
+                        <button @click="agregarItem()" id="btn-agregar">Contratar</button>
+        </div>
+
+        <div class="row">
+            <div>
+                <h4>Disponibles</h4>
+                <table id="tabla_registros">
+                    <thead>
+                        <tr>
+                            <th>Heroe</th>
+                            <th>Tiempo contratado</th>
+                            <th>Acción</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr v-for="(item,index) in inventario" :key="index">
+                            <td>{{item.heroe}}</td>
+                            <td>{{item.tiempo}} hrs</td>
+                            <td>
+                                <button @click="seleccionarItem(item)"  id="btn-select">Seleccionar</button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div>
+                <h4>Heroes contratados</h4>
+                <div>
+                    <ul>
+                        <li v-for="(sel,i) in seleccionados"  :key="i">
+                             {{sel.heroe}} <span> {{sel.tiempo}} hrs</span>
+                        </li> 
+                    </ul>
+                    <button @click="paraImprimirH()" :disabled="seleccionados.lenght===0">
+                        Generar Reporte PDF
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <script src="js/script.js"></script>
 
