@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Reporte de Misión</title>
+    <link rel="stylesheet" href="css/styleH.css">
+</head>
+
+<body onload="window.print()">
+    <div id="app">
+        <h1>Contratacion heroes de alquiler orden</h1>
+        <table>
+            <thead>
+                <tr>
+                    <th>Nombre del heroe</th>
+                    <th>Tiempo de contratacion</th>
+                </tr>
+            </thead>
+            <tbody id="tabla-print">
+                </tbody>
+        </table>
+    </div>
+
+    <script>
+        const datos = JSON.parse(localStorage.getItem('heroesseleccionados'));
+        const tabla = document.getElementById('tabla-print');
+
+        if (datos) {
+            datos.forEach(item => {
+                tabla.innerHTML += `
+                    <tr>
+                        <td>${item.heroe}</td>
+                        <td>${item.tiempo}kg</td>
+                    </tr>`;
+            });
+        }
+    </script>
+</body>
+</html>
